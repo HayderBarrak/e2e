@@ -1,0 +1,116 @@
+<header id="header" class="animated fadeInDown">
+
+  <div id="logo-group">
+    <span id="logo"> <img src="assets/img/cloudlogo" alt="SmartAdmin"> </span>
+  </div>
+
+  <!--  <span id="extr-page-header-space"> <span class="hidden-mobile hiddex-xs">Need an account?</span> <a routerLink="/auth/register" class="btn btn-danger">Create account</a> </span>-->
+
+</header>
+<div id="main" role="main" class="animated fadeInDown">
+
+  <div id="content" class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-7 col-lg-8 hidden-xs hidden-sm">
+        <h1 class="txt-color-red login-header-big">Révolutionnez demain dès aujourd'hui</h1>
+
+        <div class="hero">
+          <div class="pull-left login-desc-box-l">
+            <h5 class="paragraph-header">Notre Passion ! Vous accompagner vers l’enchantement de vos clients !
+              <br>
+              <h1 class="txt-color-red login-header-big">Décomplexez votre Business</h1>
+              De votre réussite dépend la notre.<br>
+              <br>
+              Une équipe d’experts passionnés vous accompagne pour la réussite de vos projets.
+            </h5>
+
+
+            <!--            <div class="login-app-icons">-->
+            <!--              <a routerLink="/dashboard/analytics" class="btn btn-danger btn-sm">Frontend Template</a>-->
+            <!--              <a routerLink="/smartadmin/app-layouts" class="btn btn-danger btn-sm">Find out more</a>-->
+            <!--            </div>-->
+          </div>
+            <!--          <img src="assets/img/protractorAngular.png" class="pull-right display-image" alt=""-->
+            <!--               style="width:307px;height: 300px;margin-top: -20px">-->
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <h5 class="about-heading">Révolutionnez Votre Centre de Contact</h5>
+
+            <p>
+              Affranchissez-vous de vos systèmes traditionnels et optez pour une solution « Full-Cloud »
+            </p>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <h5 class="about-heading">Augmentez vos ventes</h5>
+
+            <p>
+              Avec une solution de Télémarketing simple et efficace. Livrez la bonne information à vos agents et
+              automatisez vos processus de vente
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4">
+          <div class="well no-padding" style='margin-top: 57px'>
+          <form [formGroup]="loginForm" class="smart-form client-form" (ngSubmit)="onSubmit()"
+          >
+            <header>
+              Se connecter
+            </header>
+
+            <fieldset>
+
+
+              <section>
+                <label class="label">Login</label>
+                  <label class="input">
+                    <i class="icon-append fa fa-envelope"></i>
+
+                    <input formControlName="username" type="text" name="amount" placeholder="Login">
+
+                    <b class="tooltip tooltip-bottom-right">Entrer votre login</b>
+
+                  </label>
+                </section>
+
+              <section>
+                <label class="label">Mot de passe</label>
+                <label class="input"> <i class="icon-append fa fa-lock"></i>
+                  <input formControlName="password" type="password" name="amount" required placeholder="Mot de passe">
+                  <b class="tooltip tooltip-top-right"><i class="fa fa-lock txt-color-teal"></i> Entrer mot de passe</b>
+                </label>
+
+                <!--                <div class="note">-->
+                <!--                  <a routerLink="/auth/forgot-password">Mot de passe oublié ? </a>-->
+                <!--                </div>-->
+              </section>
+              <!--              <section>-->
+              <!--                <label class="checkbox">-->
+              <!--                  <input type="checkbox" name="remember"   checked >-->
+              <!--                  <i></i>Stay signed in</label>-->
+              <!--              </section>-->
+            </fieldset>
+            <footer>
+              <button class="btn btn-primary">
+                Connexion
+              </button>
+            </footer>
+          </form>
+        </div>
+        <!--        <h5 class="text-center"> - Or sign in using -</h5>-->
+        <!--        <ul class="list-inline text-center">-->
+        <!--          <li>-->
+        <!--            <a (click)="(null)" class="btn btn-primary btn-circle"><i class="fa fa-facebook"></i></a>-->
+        <!--          </li>-->
+        <!--          <li>-->
+        <!--            <a (click)="(null)" class="btn btn-info btn-circle"><i class="fa fa-twitter"></i></a>-->
+        <!--          </li>-->
+        <!--          <li>-->
+        <!--            <a (click)="(null)" class="btn btn-warning btn-circle"><i class="fa fa-linkedin"></i></a>-->
+        <!--          </li>-->
+        <!--        </ul>-->
+      </div>
+    </div>
+  </div>
+</div>

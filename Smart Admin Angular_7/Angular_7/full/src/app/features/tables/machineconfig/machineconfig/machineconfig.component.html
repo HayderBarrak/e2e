@@ -1,0 +1,350 @@
+<div id="content">
+  <!--<div class="row">-->
+  <!--<sa-big-breadcrumbs [items]="['Table', 'Ngx Datatable']" icon="table"-->
+  <!--class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></sa-big-breadcrumbs>-->
+  <!--</div>-->
+
+  <sa-widgets-grid>
+
+
+    <div class="row">
+
+
+      <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+        <h1 class="page-title txt-color-blueDark"><!-- PAGE HEADER --><i class="fa-fw fa fa-home"></i> Acceuil <span>/
+							Configuration des machines </span></h1>
+      </div>
+
+      <article class="col-sm-12 col-md-12 col-lg-12">
+
+        <div sa-widget [editbutton]="false" [fullscreenbutton]="false" color="blueDark">
+
+          <header>
+            <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+
+            <h2>Configuration des Machines</h2>
+          </header>
+
+          <div>
+            <div class="widget-body no-padding">
+
+              <div class="lightest-gray-bg">
+                <br>
+                <div class="col-md-6">
+                  <div class="input-group">
+                    <div class="icon-addon">
+                      <input type="text" id="search" class="form-control" [(ngModel)]="controls.filter"
+                             placeholder='Tapez pour filtrer la table...'
+                             (keyup)='updateFilter($event)'>
+                      <label style="z-index: 22" for="search" class="fa fa-search" rel="tooltip" title="search"></label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row"  style="padding: 8px 12px">
+                  <div class="col-sm-12">
+                  </div>
+                </div>
+                <ngx-datatable
+
+
+                        style="height: 520px;"
+
+                        #myTable
+                        class='table-striped'
+                        [columnMode]="'flex'"
+                        [headerHeight]="40"
+                        [footerHeight]="60"
+                        [rowHeight]="40"
+                        [scrollbarV]="35"
+                        [rows]="rows"
+
+                        [selected]="selected"
+                        [selectionType]="'checkbox'"
+                        (select)='onSelect($event)'
+
+
+
+
+
+                        (page)="onPage($event)">
+
+
+                  <ngx-datatable-footer>
+                    <ng-template
+                            ngx-datatable-footer-template
+                            let-rowCount="rowCount"
+                            let-pageSize="pageSize"
+                            let-selectedCount="selectedCount"
+                            let-curPage="curPage"
+                            let-offset="offset">
+                      <div style="margin-top:50px;margin-bottom: 30px">
+
+                        <div class="form-group">
+                            <button class='btn btn-xs pull-left' (click)="add()"
+                                    style='background-color: #860f14;color: white'><i
+                                    class="glyphicon glyphicon-plus-sign"></i></button>
+                            <button class='btn btn-xs  pull-left'
+                                    style='margin-left:5px;background-color: #860f14;color: white'
+                                    (click)="showPopup()"><i class="fa fa-trash"></i></button>
+                            <button class='btn btn-xs pull-left'
+                                    style='margin-left:5px;background-color: #860f14;color: white'
+                                    (click)="refresh()"><i class="fa fa-refresh"></i></button>
+
+                          <datatable-pager style="margin-left: 300px"
+                                           [page]="curPage"
+                                           [size]="pageSize"
+                                           [count]="rowCount"
+                                           (change)="myTable.onFooterPage($event)"
+                                           [pagerLeftArrowIcon]="cssClasses.pagerLeftArrow"
+                                           [pagerRightArrowIcon]="cssClasses.pagerRightArrow"
+                                           [pagerPreviousIcon]="cssClasses.pagerPrevious"
+                                           [pagerNextIcon]="cssClasses.pagerNext">
+
+
+                          </datatable-pager>
+
+                        </div>
+
+                      </div>
+                      <select (change)="loadall()" [(ngModel)]="itemsPerPage" class="ui-pg-selbox " role="listbox"
+                              style="height: 33px;width: 42px;background-color: #a9262b;color: white">
+                        <option *ngFor="let size of pagesizelist" [ngValue]="size">{{size}}</option>
+                      </select>
+
+
+                    </ng-template>
+                  </ngx-datatable-footer>
+
+                    <ngx-datatable-row-detail [rowHeight]="420" #myDetailRow (toggle)="onDetailToggle($event)">
+                    <ng-template let-row="row" ngx-datatable-row-detail-template>
+
+
+
+                      <!-- NEW WIDGET START -->
+                      <article class="col-sm-12 col-md-12 col-lg-12" style="margin-bottom: 100px">
+
+
+                        <!-- Widget ID (each widget will need unique ID)-->
+                        <div sa-widget class="well" [colorbutton]="true" [editbutton]="false" [togglebutton]="false" [deletebutton]="false"
+                             [fullscreenbutton]="false" [custombutton]="false" [sortable]="true">
+                          <!-- widget options:
+                          usage: <div sa-widget [editbutton]="false">
+
+                          [colorbutton]="false"
+                          [editbutton]="false"
+                          [togglebutton]="false"
+                          [deletebutton]="false"
+                          [fullscreenbutton]="false"
+                          [custombutton]="false"
+                          [collapsed]="true"
+                          [sortable]="false"
+
+                          -->
+
+                          <!-- widget div-->
+                          <div>
+
+
+                            <!-- widget content -->
+                            <div class="widget-body">
+                              <h4>Machine détails</h4>
+                              <hr class="simple">
+                              <ul id="myTab1" class="nav nav-tabs bordered">
+                                <li [class.active]="state.tabs.demo1 == 0">
+                                  <a (click)="state.tabs.demo1 = 0"><i class="fa fa-tasks"></i> Général</a>
+                                </li>
+                                <li [class.active]="state.tabs.demo1 == 1">
+                                  <a (click)="state.tabs.demo1 = 1"><i class="fa fa-fw fa-lg fa-gear"></i> Détails</a>
+                                </li>
+                              </ul>
+
+                              <tabset class="padding-10">
+                                <tab [active]="state.tabs.demo1 == 0">
+                                  <form #MyForm1 class="form-horizontal" (ngSubmit)="save()"
+                                        novalidate="novalidate" [saBootstrapValidator]="validatorOptions"
+                                    >
+
+                                    <fieldset>
+
+                                      <div class="form-group">
+                                        <label class="col-md-2 control-label">ID</label>
+                                        <div class="col-md-6">
+                                            <input class="form-control" type="text" name="id" #id="ngModel"
+                                                   [(ngModel)]="platform.id" readonly>
+                                        </div>
+                                      </div>
+
+
+                                      <div class="form-group">
+                                        <label class="col-md-2 control-label">Adresse IP</label>
+                                        <div class="col-md-6">
+                                          <input class="form-control" placeholder="Entrer l'adresse" type="text"
+                                                 [(ngModel)]="platform.adresse" name="login" #login="ngModel">
+                                        </div>
+                                      </div>
+
+
+                                      <div>
+                                        <button [disabled]="MyForm1.noValidate"
+                                                class="btn btn-xs btn-success pull-right" type="submit">Sauvegarder <i
+                                                class="fa fa-save"></i></button>
+                                      </div>
+
+
+                                    </fieldset>
+                                  </form>
+                                </tab>
+                                <tab [active]="state.tabs.demo1 == 1">
+                                  <div class="col-md-12">
+                                    <table class="table table-bordered">
+                                      <thead>
+                                      <tr>
+                                        <th style="width:20%">Informations</th>
+                                        <th style="width:20%">Détails</th>
+                                      </tr>
+                                      </thead>
+                                      <tbody>
+                                      <tr>
+                                        <th>
+                                            Docker Directory
+                                          </th>
+                                        <td>
+                                          <code>
+                                          {{platform.dockerdirec}}
+                                          </code>
+                                        </td>
+                                      </tr>
+
+                                      <tr>
+                                        <th>
+                                          Nombre de CPU
+                                        </th>
+                                        <td>
+                                          <code>
+                                            {{platform.ncpu}}
+                                          </code>
+                                        </td>
+                                      </tr>
+
+                                      <tr>
+                                        <th>
+                                          Type de système d'exploitation
+                                        </th>
+                                        <td>
+                                          <code>
+                                            {{platform.ostype}}
+                                          </code>
+                                        </td>
+                                      </tr>
+
+                                      <tr>
+                                        <th>
+                                          Le sytème d'exploitation
+                                        </th>
+                                        <td>
+                                          <code>
+                                            {{platform.opsystem}}
+                                          </code>
+                                        </td>
+                                      </tr>
+
+                                      <tr>
+                                        <th>
+                                          Mémoire totale
+                                        </th>
+                                        <td>
+                                          <code>
+                                            {{platform.memototal | number}}  Gi
+                                          </code>
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <th>
+                                            Conteneurs infos
+                                        </th>
+                                        <td>
+                                          <code>
+                                            {{platform.containerimage}}
+                                          </code>
+                                        </td>
+                                      </tr>
+
+                                    </table>
+                                  </div>
+                                </tab>
+                              </tabset>
+
+                            </div>
+                            <!-- end widget content -->
+
+                          </div>
+                          <!-- end widget div -->
+
+                        </div>
+                        <!-- end widget -->
+
+                      </article>
+
+
+
+                    </ng-template>
+
+                  </ngx-datatable-row-detail>
+                  <!-- Column Templates -->
+                  <ngx-datatable-column [resizeable]="false" [flexGrow]="0.01">
+                    <ng-template ngx-datatable-cell-template let-value="value" let-isSelected="isSelected" let-onCheckboxChangeFn="onCheckboxChangeFn" class="width">
+                      <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)"/>
+                    </ng-template>
+                  </ngx-datatable-column>
+
+                  <ngx-datatable-column
+                          [flexGrow]="0.01"
+
+
+                          [resizeable]="false"
+                          [sortable]="true"
+                          [draggable]="false"
+                          [canAutoResize]="true">
+
+
+                    <ng-template class="align-center" let-row="row" ngx-datatable-cell-template>
+                      <a class="fa"
+
+                         [ngClass]="{
+               'fa-plus':!row.$$expanded,
+               'fa-minus':row.$$expanded
+             }"
+                         title="Expand/Collapse Row"
+                         (click)="toggleExpandRow(row)">
+                      </a>
+                    </ng-template>
+                  </ngx-datatable-column>
+
+                  <ngx-datatable-column name="Nom de la machine" [flexGrow]="0.1" [resizeable]="false">
+                    <ng-template let-row="row" ngx-datatable-cell-template [(ngModel)]="platform.machinename" name="machinename" ngDefaultControl>
+                      <strong>{{row.machinename}}</strong>
+                    </ng-template>
+                  </ngx-datatable-column>
+                  <ngx-datatable-column name="Adresse IP" [flexGrow]="0.1"   [resizeable]="false">
+                    <ng-template let-row="row" ngx-datatable-cell-template [(ngModel)]="platform.adresse" name="adresse" ngDefaultControl>
+                      <strong>{{row.adresse}}</strong>
+                    </ng-template>
+                  </ngx-datatable-column>
+
+
+                </ngx-datatable>
+                  <ngx-loading [show]="loading"
+                               [config]="{ backdropBorderRadius: '3px',primaryColour:'#a9262b',secondaryColour:'#a9262b',tertiaryColour:'#a9262b' }"></ngx-loading>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+      </article>
+    </div>
+  </sa-widgets-grid>
+</div>

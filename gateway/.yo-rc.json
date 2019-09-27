@@ -1,0 +1,33 @@
+{
+    "generator-jhipster": {
+        "promptValues": {
+            "packageName": "sandbox.lyance.com"
+        },
+        "jhipsterVersion": "5.7.2",
+        "applicationType": "gateway",
+        "baseName": "gateway",
+        "packageName": "sandbox.lyance.com",
+        "packageFolder": "sandbox/lyance/com",
+        "serverPort": "8080",
+        "authenticationType": "jwt",
+        "cacheProvider": "hazelcast",
+        "enableHibernateCache": true,
+        "websocket": false,
+        "databaseType": "sql",
+        "devDatabaseType": "postgresql",
+        "prodDatabaseType": "postgresql",
+        "searchEngine": false,
+        "messageBroker": false,
+        "serviceDiscoveryType": "eureka",
+        "buildTool": "maven",
+        "enableSwaggerCodegen": false,
+        "jwtSecretKey": "ODQ1ZjIyZDYxNDg3OTE3OTMzZjdiY2FhMTVjNGQ2Y2FlYTU4YmZjMDRhOWY3MWQ2ZmZkNWY3MTQwZmIwZWYzM2U5N2UwMzViYWU1NmEwYzNiMTk4MTg1YjRkZTlhMmRkZjU3YzdmYzU2OTY2OTE4NjI4NThjNTE4MWFjOWZhZDk=",
+        "clientFramework": "angularX",
+        "useSass": true,
+        "clientPackageManager": "npm",
+        "testFrameworks": [],
+        "jhiPrefix": "jhi",
+        "otherModules": [],
+        "enableTranslation": false
+    }
+}

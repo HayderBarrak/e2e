@@ -1,0 +1,580 @@
+<div id="content">
+  <sa-widgets-grid>
+
+    <div class="row">
+
+      <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+          <h1 class="page-title txt-color-blueDark"><!-- PAGE HEADER --><i class="fa-fw fa fa-home"></i> Acceuil <span>/
+							Configuration des scénarios </span></h1>
+      </div>
+
+      <article class="col-sm-12 col-md-12 col-lg-12">
+
+
+
+        <div sa-widget [editbutton]="false" [fullscreenbutton]="true" color="blueDark">
+          <header>
+            <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+
+              <h2>Configuration des scénarios</h2>
+          </header>
+
+
+          <div>
+            <div class="widget-body no-padding">
+
+
+                <!-- row -->
+                <div class="row">
+
+                    <!-- NEW WIDGET START -->
+                    <article class="col-sm-12 col-md-12 col-lg-12" style="height: 600px">
+
+                        <!-- Widget ID (each widget will need unique ID)-->
+                        <div sa-widget [colorbutton]="false" [editbutton]="false">
+
+                            <!-- widget div-->
+                            <div>
+
+                                <!-- widget content -->
+                                <div class="widget-body">
+
+                                    <form class="form-horizontal">
+
+
+                                        <article class="col-sm-12 col-md-12 col-lg-12">
+
+                                        <!-- Widget ID (each widget will need unique ID)-->
+                                        <div>
+
+                                          <!-- widget div-->
+                                          <div>
+                                            <!-- widget content -->
+                                            <div class="widget-body">
+                                              <ul id="myTab1" class="nav nav-tabs bordered">
+                                                <li [class.active]="state.tabs.demo1 == 0">
+                                                  <a (click)="state.tabs.demo1 = 0"><i class="fa fa-tasks"></i> Général</a>
+                                                </li>
+                                                <li [class.active]="state.tabs.demo1 == 1">
+                                                  <a (click)="state.tabs.demo1 = 1"><i class="fa fa-fw fa-lg fa-gear"></i> Détails</a>
+                                                </li>
+                                              </ul>
+
+                                              <tabset class="padding-10">
+                                                <tab [active]="state.tabs.demo1 == 0">
+
+                                                    <!--                                                        ngx data table-->
+
+                                                    <div>
+                                                        <div class="widget-body no-padding">
+
+                                                            <div class="lightest-gray-bg">
+                                                                <br>
+                                                                <div class="col-md-6">
+                                                                    <div class="input-group">
+                                                                        <div class="icon-addon">
+                                                                            <input type="text" id="search"
+                                                                                   class="form-control"
+                                                                                   [(ngModel)]="controls.filter"
+                                                                                   name="controls"
+                                                                                   placeholder='Tapez pour filtrer la table...'
+                                                                                   (keyup)='updateFilter($event)'>
+                                                                            <label style="z-index: 22" for="search"
+                                                                                   class="fa fa-search" rel="tooltip"
+                                                                                   title="search"></label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row" style="padding: 8px 12px">
+                                                                    <div class="col-sm-12">
+                                                                    </div>
+                                                                </div>
+                                                                <ngx-datatable
+
+
+                                                                        style="height: 800px;"
+
+                                                                        #myTable
+                                                                        class='table-striped'
+                                                                        [columnMode]="'flex'"
+                                                                        [headerHeight]="40"
+                                                                        [footerHeight]="60"
+                                                                        [rowHeight]="50"
+                                                                        [scrollbarV]="35"
+                                                                        [rows]="rows"
+
+                                                                        [selected]="selected"
+                                                                        [selectionType]="'checkbox'"
+                                                                        (select)='onSelect($event)'
+
+
+                                                                        (page)="onPage($event)">
+
+
+                                                                    <ngx-datatable-footer>
+                                                                        <ng-template
+                                                                                ngx-datatable-footer-template
+                                                                                let-rowCount="rowCount"
+                                                                                let-pageSize="pageSize"
+                                                                                let-selectedCount="selectedCount"
+                                                                                let-curPage="curPage"
+                                                                                let-offset="offset">
+                                                                            <div style="margin-top:50px;margin-bottom: 30px">
+
+                                                                                <div class="form-group">
+                                                                                    <button class='btn btn-xs pull-left'
+                                                                                            style='margin-left:5px;background-color: #860f14;color: white'
+                                                                                            (click)="showPopup()"
+                                                                                    ><i class="fa fa-trash"></i>
+                                                                                    </button>
+                                                                                    <button class='btn btn-xs pull-left'
+                                                                                            style='margin-left:5px;background-color: #860f14;color: white'
+                                                                                            (click)="refresh()"><i
+                                                                                            class="fa fa-refresh"></i>
+                                                                                    </button>
+
+                                                                                    <datatable-pager
+                                                                                            style="margin-left: 300px"
+                                                                                            [page]="curPage"
+                                                                                            [size]="pageSize"
+                                                                                            [count]="rowCount"
+                                                                                            (change)="myTable.onFooterPage($event)"
+                                                                                            [pagerLeftArrowIcon]="cssClasses.pagerLeftArrow"
+                                                                                            [pagerRightArrowIcon]="cssClasses.pagerRightArrow"
+                                                                                            [pagerPreviousIcon]="cssClasses.pagerPrevious"
+                                                                                            [pagerNextIcon]="cssClasses.pagerNext">
+
+
+                                                                                    </datatable-pager>
+                                                                                </div>
+
+                                                                            </div>
+
+
+                                                                            <select (change)="loadallScenario()"
+                                                                                    [(ngModel)]="itemsPerPage"
+                                                                                    class="ui-pg-selbox " role="listbox"
+                                                                                    style="height: 33px;width: 42px;background-color: #a9262b;color: white">
+                                                                                <option *ngFor="let size of pagesizelist"
+                                                                                        [ngValue]="size">{{size}}</option>
+                                                                            </select>
+                                                                        </ng-template>
+
+
+                                                                    </ngx-datatable-footer>
+
+
+                                                                    <ngx-datatable-row-detail [rowHeight]="500"
+                                                                                              #myDetailRow
+                                                                                              (toggle)="onDetailToggle($event)">
+                                                                        <ng-template let-row="row"
+                                                                                     ngx-datatable-row-detail-template
+                                                                                     style="background-color: #66afe9">
+
+
+                                                                            <form #MyForm1 class="form-horizontal"
+                                                                            >
+
+                                                                                <fieldset>
+                                                                                    <legend>Scenario détails</legend>
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-md-2 control-label">ID</label>
+                                                                                        <div class="col-md-6">
+                                                                                            <input class="form-control"
+                                                                                                   type="text" name="id"
+                                                                                                   #id="ngModel"
+                                                                                                   [(ngModel)]="scenario.id"
+                                                                                                   readonly>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-md-2 control-label">Description
+                                                                                            du scenario</label>
+                                                                                        <div class="col-lg-6">
+                                                                                            <input class="form-control"
+                                                                                                   type="text"
+                                                                                                   [(ngModel)]="scenario.description"
+                                                                                                   name="nom"
+                                                                                                   #nom="ngModel">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <br>
+                                                                                    <div class="form-group">
+                                                                                        <div>
+                                                                                            <div class="widget-body no-padding">
+                                                                                                <div class="summernote"
+                                                                                                     [summernote]="{height: 300}"
+                                                                                                     name="contenu">
+
+
+                                                                                                    <!--                                                                                                                                         {{l.assertions}}<br>-->
+                                                                                                    <!--                                                                                                                                              {{l.description}}<br>-->
+                                                                                                    <!--                                                                                                                                   {{l.duration}}-->
+
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </fieldset>
+
+
+                                                                            </form>
+                                                                        </ng-template>
+
+                                                                    </ngx-datatable-row-detail>
+
+
+                                                                    <ngx-datatable-column [resizeable]="false"
+                                                                                          [flexGrow]="0.01">
+                                                                        <ng-template ngx-datatable-cell-template
+                                                                                     let-value="value"
+                                                                                     let-isSelected="isSelected"
+                                                                                     let-onCheckboxChangeFn="onCheckboxChangeFn"
+                                                                                     class="width">
+                                                                            <input type="checkbox"
+                                                                                   style="margin-right: 6px;margin-top: 10px"
+                                                                                   [checked]="isSelected"
+                                                                                   (change)="onCheckboxChangeFn($event)"/>
+                                                                        </ng-template>
+                                                                    </ngx-datatable-column>
+
+                                                                    <ngx-datatable-column
+                                                                            [flexGrow]="0.01"
+
+
+                                                                            [resizeable]="false"
+                                                                            [sortable]="true"
+                                                                            [draggable]="false"
+                                                                            [canAutoResize]="true">
+
+
+                                                                        <ng-template class="align-center" let-row="row"
+                                                                                     ngx-datatable-cell-template>
+                                                                            <a class="fa"
+                                                                               style="margin-right: 6px;margin-top: 10px"
+
+                                                                               [ngClass]="{
+                                                                               'fa-plus':!row.$$expanded,
+                                                                               'fa-minus':row.$$expanded
+                                                                                           }"
+                                                                               title="Expand/Collapse Row"
+                                                                               (click)="toggleExpandRow(row)">
+                                                                            </a>
+                                                                        </ng-template>
+                                                                    </ngx-datatable-column>
+
+
+                                                                    <ngx-datatable-column name="" [width]="100"
+                                                                                          [flexGrow]="0.02"
+                                                                                          [resizeable]="false">
+                                                                        <ng-template let-row="row"
+                                                                                     ngx-datatable-cell-template
+                                                                                     ngDefaultControl
+                                                                                     [(ngModel)]="scenario.id"
+                                                                                     name="id">
+                                                                            <div class="btn-group"
+                                                                                 data-toggle="buttons"
+                                                                                 style="margin-left: 6px">
+                                                                                <label class="btn btn-default btn-large">
+                                                                                    <input type="radio" name="style-a1"
+                                                                                           id="style-a1"
+                                                                                           (click)="lancement(row.id)"
+                                                                                    > <i
+                                                                                        class="fa fa-play"
+                                                                                        style="color:#049071"></i>
+                                                                                </label>
+                                                                            </div>
+
+
+                                                                        </ng-template>
+                                                                    </ngx-datatable-column>
+
+
+                                                                    <ngx-datatable-column name="Nom" [flexGrow]="0.06"
+                                                                                          [resizeable]="false">
+                                                                        <ng-template let-row="row"
+                                                                                     ngx-datatable-cell-template
+                                                                                     [(ngModel)]="scenario.nom"
+                                                                                     name="nom" ngDefaultControl>
+                                                                            <strong>{{row.nom}}</strong>
+                                                                        </ng-template>
+                                                                    </ngx-datatable-column>
+
+
+                                                                    <ngx-datatable-column name="Script"
+                                                                                          [flexGrow]="0.06"
+                                                                                          [resizeable]="false">
+                                                                        <ng-template let-row="row"
+                                                                                     ngx-datatable-cell-template
+
+
+                                                                                     ngDefaultControl
+                                                                                     [(ngModel)]="scenario.script.nom_script"
+                                                                                     name="script">
+
+                                                                            <strong>{{row.script.nom_fichier}}</strong>
+                                                                        </ng-template>
+                                                                    </ngx-datatable-column>
+
+                                                                    <ngx-datatable-column name="Plateforme"
+                                                                                          [flexGrow]="0.06"
+                                                                                          [resizeable]="false">
+
+                                                                        <ng-template let-row="row" name="plateforme"
+                                                                                     ngx-datatable-cell-template
+                                                                                     ngDefaultControl
+                                                                                     [(ngModel)]="scenario.plateforme.nom"
+                                                                                     name="plateforme">
+                                                                            <strong>{{row.plateforme.nom}}</strong>
+                                                                        </ng-template>
+                                                                    </ngx-datatable-column>
+
+
+                                                                    <ngx-datatable-column name="Machine"
+                                                                                          [flexGrow]="0.06"
+                                                                                          [resizeable]="false"
+                                                                    >
+
+                                                                        <ng-template let-row="row"
+                                                                                     ngx-datatable-cell-template
+                                                                                     name="machine"
+                                                                                     ngDefaultControl
+                                                                                     [(ngModel)]="scenario.machine.machinename">
+                                                                            <strong>{{row.machine.machinename}}</strong>
+                                                                        </ng-template>
+                                                                    </ngx-datatable-column>
+
+
+                                                                </ngx-datatable>
+                                                                <ngx-loading [show]="loading"
+                                                                             [config]="{ backdropBorderRadius: '3px',primaryColour:'#a9262b',secondaryColour:'#a9262b',tertiaryColour:'#a9262b' }"></ngx-loading>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </tab>
+
+                                                  <tab [active]="state.tabs.demo1 == 1">
+                                                      <legend>La création des scénarios</legend>
+                                                      <form #MyForm1 id="addscenarioForm" novalidate="novalidate"
+                                                            [saBootstrapValidator]="validatorOptions">
+
+                                                      <div class="form-group">
+                                                          <label class="col-md-2 control-label"
+                                                                 style="margin-left: -38px">Nom du scénario</label>
+                                                          <br>
+                                                          <br>
+                                                          <div class="col-lg-15">
+                                                              <input class="form-control" placeholder="Nom du scénario"
+                                                                     [(ngModel)]="scenario.nom" name="nom" id="nom"
+                                                                     type="text" #nom="ngModel">
+                                                          </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label"
+                                                               style="margin-left: -71px">Description</label>
+                                                        <br>
+                                                        <br>
+                                                        <div class="col-md-15">
+                                                            <textarea class="form-control"
+                                                                      placeholder="Description du scénario"
+                                                                      [(ngModel)]="scenario.description"
+                                                                      name="description"
+                                                                      id="description"
+                                                                      rows="4" #description="ngModel"></textarea>
+                                                        </div>
+                                                    </div>
+
+                                                          <label>Sélectionner une plateforme</label>
+                                                  <div class="form-group" style="background-color: black">
+                                                    <ng-select
+
+
+                                                            [(ngModel)]="scenario.plateforme"
+                                                            name="platformselected"
+                                                            (ngModelChange)="onselected(scenario.plateforme.id)"
+                                                            [ngModelOptions]="{standalone: true}"
+                                                            placeholder="Sélectionner une plateforme"
+                                                            [hideSelected]="true"
+                                                            style="width:100%"
+                                                            [closeOnSelect]="false"
+                                                            [searchable]="false"
+                                                            [multiple]="false"
+                                                            [required]="true"
+                                                    >
+                                                        <ng-option *ngFor="let p of platform" [value]="p">{{p.nom}}
+                                                      </ng-option>
+                                                    </ng-select>
+                                                  </div>
+                                                  <br>
+
+                                                          <label>Sélectionner une campagne</label>
+                                                  <div class="form-group" style="background-color: black">
+
+                                                      <ng-select
+                                                              [(ngModel)]="cmpselected"
+                                                              (ngModelChange)="onSel(scenario.plateforme.id,cmpselected)"
+                                                              [ngModelOptions]="{standalone: true}"
+                                                              placeholder="Sélectionner une campagne"
+                                                              [hideSelected]="true"
+                                                              style="width:100%"
+                                                              [closeOnSelect]="false"
+                                                              [searchable]="false"
+                                                              [multiple]="true"
+                                                              [items]="cmp"
+                                                              bindLabel="name"
+                                                              bindValue="rid"
+                                                              groupBy="status"
+                                                              [required]="true"
+                                                      >
+
+
+                                                          <ng-template ng-label-tmp let-cmp="item">
+                                                              <div class="lds-ellipsis">
+                                                                  {{cmp.name}}
+                                                              </div>
+                                                          </ng-template>
+
+                                                      </ng-select>
+
+                                                  </div>
+                                                    <br>
+                                                          <label>Sélectionner un agent</label>
+                                                    <div class="form-group" style="background-color: black">
+
+                                                        <ng-select placeholder="Sélectionner un agent"
+                                                                   [(ngModel)]="agentselected"
+                                                                   [ngModelOptions]="{standalone: true}"
+                                                                   (ngModelChange)="AgSelect()"
+                                                                   [hideSelected]="true"
+                                                                   style="width:100%"
+                                                                   [closeOnSelect]="false"
+                                                                   [searchable]="false"
+                                                                   [multiple]="false"
+                                                                   [required]="true"
+
+                                                        >
+
+                                                            <ng-option *ngFor="let u of Users"
+                                                                       [value]="u.login"> {{u.login}}
+                                                            </ng-option>
+
+                                                        </ng-select>
+                                                    </div>
+                                                      <br>
+
+                                                    <label>Sélectionner vos specs</label>
+                                                  <div class="form-group" style="background-color: black">
+                                                      <ng-select placeholder="Select script"
+                                                                 [hideSelected]="true"
+                                                                 style="width:100%"
+                                                                 (ngModelChange)="Scselect(scenario.script.id)"
+                                                                 [closeOnSelect]="false"
+                                                                 [searchable]="false"
+                                                                 [multiple]="false"
+                                                                 [(ngModel)]="scenario.script"
+                                                                 [ngModelOptions]="{standalone: true}"
+                                                                 placeholder="Sélectionner un specs"
+                                                                 [required]="true"
+
+
+
+                                                      >
+
+                                                          <ng-option
+                                                                  *ngFor="let s of script"
+                                                                  [value]="s">{{s.nom_fichier}}</ng-option>
+
+                                                    </ng-select>
+                                                  </div>
+                                                    <br>
+                                                    <label>Sélectionner vos machines</label>
+                                                  <div class="form-group" style="background-color: black">
+                                                      <ng-select placeholder="Select machines" [hideSelected]="true"
+                                                                 style="width:100%"
+                                                                 (ngModelChange)="MaSelect(scenario.machine.id)"
+                                                                 [closeOnSelect]="false"
+                                                                 [searchable]="false"
+                                                                 [multiple]="false"
+                                                                 [(ngModel)]="scenario.machine"
+                                                                 [ngModelOptions]="{standalone: true}"
+                                                                 placeholder="Sélectionner une machine"
+                                                                 [required]="true"
+                                                      >
+
+                                                          <ng-option
+                                                                  *ngFor="let m of machine"
+                                                                  [value]="m">{{m.machinename}}</ng-option>
+
+                                                    </ng-select>
+                                                  </div>
+
+                                                      <br>
+                                                      <br>
+                                                      <br>
+
+                                                          <!--                                                         // (click)="Parse(scenario.plateforme.id,scenario.machine.id,scenario.script.id,scenario.id)"-->
+                                                      <div>
+                                                          <button [disabled]="MyForm1.noValidate"
+                                                                  class="btn btn-xs btn-success pull-right"
+                                                                  type="submit"
+                                                                  (click)="Parse(scenario.plateforme.id,scenario.machine.id,scenario.script.id,scenario.id,agentselected)">
+                                                              Sauvegarder
+                                                              <i class="fa fa-save"></i></button>
+                                                          <button class="btn btn-xs btn-danger pull-right"
+                                                                  style="margin-right: 12px"
+                                                                  (click)="reset()"
+                                                          >
+                                                              Annuler
+                                                              <i class="fa fa-refresh"></i></button>
+                                                      </div>
+                                                      </form>
+
+                                                </tab>
+
+                                              </tabset>
+
+                                            </div>
+                                            <!-- end widget content -->
+
+                                          </div>
+                                          <!-- end widget div -->
+
+                                        </div>
+                                        <!-- end widget -->
+
+                                      </article>
+
+
+                                    </form>
+
+                                </div>
+                                <!-- end widget content -->
+
+                            </div>
+                            <!-- end widget div -->
+
+                        </div>
+                        <!-- end widget -->
+
+
+                        <!-- end widget -->
+
+                    </article>
+                    <!-- WIDGET END -->
+                </div>
+
+                <!-- end row -->
+
+            </div>
+          </div>
+        </div>
+
+
+      </article>
+    </div>
+  </sa-widgets-grid>
+</div>

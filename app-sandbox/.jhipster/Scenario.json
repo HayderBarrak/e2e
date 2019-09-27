@@ -1,0 +1,27 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "sandbox",
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "nom",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20190417104009",
+    "dto": "no",
+    "searchEngine": false,
+    "service": "no",
+    "entityTableName": "scenario",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination",
+    "microserviceName": "sandbox"
+}

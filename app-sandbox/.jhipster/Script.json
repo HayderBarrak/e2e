@@ -1,0 +1,38 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "sandbox",
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "nom_script",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nom_fichier",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "contenu",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20190315153628",
+    "dto": "no",
+    "searchEngine": false,
+    "service": "no",
+    "entityTableName": "script",
+    "databaseType": "sql",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination",
+    "microserviceName": "sandbox"
+}

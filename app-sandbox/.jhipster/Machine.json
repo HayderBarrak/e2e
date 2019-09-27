@@ -1,0 +1,43 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "sandbox",
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "machinename",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "driver",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dockerdirec",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "memototal",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "ncpu",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "ostype",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "opsystem",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20190305132811",
+    "dto": "no",
+    "searchEngine": false,
+    "service": "no",
+    "entityTableName": "machine",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination",
+    "microserviceName": "sandbox"
+}

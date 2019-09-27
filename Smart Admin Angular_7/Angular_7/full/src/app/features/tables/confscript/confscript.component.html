@@ -1,0 +1,107 @@
+<div id="content">
+    <sa-widgets-grid>
+        <div class="row">
+
+            <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+                <h1 class="page-title txt-color-blueDark"><!-- PAGE HEADER --><i class="fa-fw fa fa-home"></i> Acceuil
+                    <span>/
+							Configuration des scripts de test </span></h1>
+            </div>
+
+            <article class="col-sm-12 col-md-12 col-lg-12">
+              <div sa-widget [editbutton]="false" [fullscreenbutton]="true" color="blueDark">
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+
+                        <h2>Configuration des scripts de test</h2>
+                    </header>
+                   <div>
+                        <div class="widget-body no-padding">
+                            <row-detail-demo></row-detail-demo>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+
+
+            <article class="col-sm-12 col-md-12 col-lg-12">
+                <div sa-widget [editbutton]="false" [fullscreenbutton]="true" color="blueDark">
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+                        <h2>Télécharger un script</h2>
+                    </header>
+                    <div>
+                        <div class="widget-body no-padding">
+
+                                    <div class="widget-body">
+                                        <div style="text-align:center">
+
+                                            <div class="container">
+                                                <form #addForm="ngForm" [formGroup]="addscriptForm" (ngSubmit)="save()"
+                                                      id="addscriptForm"
+
+                                                      novalidate="novalidate" [saBootstrapValidator]="validatorOptions"
+
+                                                >
+                                                <fieldset>
+                                                    <div class="form-group" >
+                                                        <label class="col-md-3 control-label" style="margin-top: 10px;" ><b>Nom du script</b></label>
+                                                        <div class="col-md-6">
+                                                            <input class="form-control" type="text"
+                                                                   placeholder="Donner un nom pour le script"
+                                                                   formControlName="nom_script"
+                                                                   style="margin-top: 10px;"/>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                                <fieldset>
+                                                    <div class="form-group2">
+                                                        <label class="col-md-3 control-label" style="margin-top: 30px;"><b>Description</b></label>
+                                                        <div class="col-md-6">
+                                                            <textarea class="form-control" formControlName="description"
+                                                                      rows="5" style="margin-top:10px;"
+                                                                      placeholder="Donner une description pour le script"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                                <fieldset>
+                                                    <div class="form-group">
+                                                        <label class="col-md-3 control-label"></label>
+                                                    <div class="col-md-6">
+                                                <input type="file" accept=".js" (change)="selectFile($event)" multiple style="margin-top: 10px;">
+                                                    </div>
+                                                    </div>
+                                                </fieldset>
+                                                <fieldset>
+                                                    <br>
+                                                    <div class="form-group">
+                                                        <label class="col-md-3 control-label"></label>
+                                                    <div class="col-md-6">
+                                                        <button type="submit" class="btn btn-success"
+                                                                [disabled]="!addscriptForm.valid">Importer
+                                                        </button>
+                                                        </div>
+                                                    </div>
+
+                                                </fieldset>
+
+                                            </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+        </div>
+
+            </article>
+
+
+
+
+
+        </div>
+  </sa-widgets-grid>
+</div>
+

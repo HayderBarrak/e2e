@@ -1,0 +1,33 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "sandbox.lyance.com"
+    },
+    "jhipsterVersion": "5.7.2",
+    "applicationType": "microservice",
+    "baseName": "sandbox",
+    "packageName": "sandbox.lyance.com",
+    "packageFolder": "sandbox/lyance/com",
+    "serverPort": "8081",
+    "authenticationType": "jwt",
+    "cacheProvider": "hazelcast",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "YjgwYzA0ZjU4YjI5YTE3MGQ0YzI3MzU0NmFlNWQwYzM3Mzc4Mzc0NDBiZDA1ODA3NWVlM2E1MTQyNmUwMWVhODQwYTZhZjg1NGZlZmZmODFjYjc5N2RjOGE2YTBjOTBjMjJjOTVmNzZjNDUwNGJlNTk2ZTYwMjYwOTg4ZTM3MDA=",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "otherModules": [],
+    "enableTranslation": false,
+    "clientPackageManager": "npm",
+    "skipClient": true,
+    "skipUserManagement": true
+  }
+}
