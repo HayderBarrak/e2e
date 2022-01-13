@@ -325,6 +325,13 @@
   dependencies:
     tslib "^1.9.0"
 
+"@ng-select/ng-select@^2.16.4":
+  version "2.20.5"
+  resolved "https://registry.yarnpkg.com/@ng-select/ng-select/-/ng-select-2.20.5.tgz#bbf1b26b34bca576b13241453bdf92aa16de37a5"
+  integrity sha512-S9R3op3kd8XmAI99exPOTXwDcYOsDngIhkdsQuV1jq/rSVKdJZ6gQY1VWS5REjVnqbKbxbWAx4JA38bum/8Z7g==
+  dependencies:
+    tslib "^1.9.0"
+
 "@ngrx/effects@^6.0.1":
   version "6.1.2"
   resolved "https://registry.yarnpkg.com/@ngrx/effects/-/effects-6.1.2.tgz#602f3ee9798e00179075ddef030ded88c28b1aa1"
@@ -388,6 +395,11 @@
   version "14.0.0"
   resolved "https://registry.yarnpkg.com/@swimlane/ngx-datatable/-/ngx-datatable-14.0.0.tgz#6227625e2ce2e9143735d4deeb3ab34b88745c26"
   integrity sha512-zgRY58MzTpg9Jb575cg0O87mLtXYi6fx7NLRPRHdQ/FqH9mKjZ3i7+OjqtR8/w3KRmFP2Hnkmx52VzldZIKspg==
+
+"@types/intro.js@^2.4.4":
+  version "2.4.8"
+  resolved "https://registry.yarnpkg.com/@types/intro.js/-/intro.js-2.4.8.tgz#3d58c718cd690e4e395a5b1c7ec2711b1a42b559"
+  integrity sha512-cFeswci+krdp/DTyRPFNctz1AJseD43vRT1Mn+fn1FFMitpM657PlYkoLZ4HDoyp3L9Ixm6MgUBv151/8c5yUA==
 
 "@types/jasmine@*", "@types/jasmine@~3.3.0":
   version "3.3.7"
@@ -2159,7 +2171,7 @@ debug@2.6.9, debug@^2.1.2, debug@^2.2.0, debug@^2.3.3, debug@^2.6.6, debug@^2.6.
   dependencies:
     ms "2.0.0"
 
-debug@3.1.0, debug@=3.1.0, debug@~3.1.0:
+debug@3.1.0, debug@~3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/debug/-/debug-3.1.0.tgz#5bb5a0672628b64149566ba16819e61518c67261"
   integrity sha512-OX8XqP7/1a9cqkxYw2yXss15f26NKWBpDXQd0/uK/KPqdQhxbPa994hnzjcE2VqQpDslf55723cKPUOGSmMY3g==
@@ -3014,11 +3026,9 @@ flush-write-stream@^1.0.0:
     readable-stream "^2.0.4"
 
 follow-redirects@^1.0.0:
-  version "1.6.1"
-  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.6.1.tgz#514973c44b5757368bad8bddfe52f81f015c94cb"
-  integrity sha512-t2JCjbzxQpWvbhts3l6SH1DKzSrx8a+SsaVf4h6bG4kOXUuPYS/kg2Lr4gQSb7eemaHqJkOThF1BGyjlUkO1GQ==
-  dependencies:
-    debug "=3.1.0"
+  version "1.14.7"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.14.7.tgz#2004c02eb9436eee9a21446a6477debf17e81685"
+  integrity sha512-+hbxoLbFMbRKDwohX8GkTataGqO6Jb7jGwpAlwgy2bIz25XtRm7KEzJM76R1WiNT5SwZkX4Y75SwBolkpmE7iQ==
 
 for-in@^0.1.3:
   version "0.1.8"
@@ -3714,6 +3724,11 @@ interpret@^1.0.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.2.0.tgz#d5061a6224be58e8083985f5014d844359576296"
   integrity sha512-mT34yGKMNceBQUoVn7iCDKDntA7SC6gycMAWzGx1z/CMCTV7b2AAtXlo3nRyHZ1FelRkQbQjprHSYGwzLtkVbw==
+
+intro.js@^2.9.3:
+  version "2.9.3"
+  resolved "https://registry.yarnpkg.com/intro.js/-/intro.js-2.9.3.tgz#001d9a7bca66d8f4d2d0253c9b3345e9ae4320c3"
+  integrity sha512-hC+EXWnEuJeA3CveGMat3XHePd2iaXNFJIVfvJh2E9IzBMGLTlhWvPIVHAgKlOpO4lNayCxEqzr4N02VmHFr9Q==
 
 invariant@^2.2.2:
   version "2.2.4"
@@ -5110,6 +5125,20 @@ ngx-bootstrap@3.1.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/ngx-bootstrap/-/ngx-bootstrap-3.1.2.tgz#f466f6290b456806dac2a9b95a12f9dc4979782f"
   integrity sha512-ULooVAtHBir96PDOz8aDP+slkoY+YX3EWeYV7rwkwMQooc6MaFc+EFBBrAkQf1n0N/rJ4Z9GGccRS5vk/1JFog==
+
+ngx-loading@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/ngx-loading/-/ngx-loading-3.0.1.tgz#c8b2164039394716af67e9dbec788ee66a7f21f2"
+  integrity sha512-tiBeQt9PfT31TkN6cg0Wot+r1rDTq6WCI6yiJas7Sqx5xrqun/x/zDBz9R/hCfPcgWNR3t/0GjRrKEj68eDVXw==
+  dependencies:
+    tslib "^1.9.0"
+
+ngx-spinner@^7.1.4:
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/ngx-spinner/-/ngx-spinner-7.2.0.tgz#3aaffe47ee17a393f04e02f7a36221570c4f4ba0"
+  integrity sha512-E3IVOrSXCC4v/8iy/f1cGWMfRF5HrmuGCGcTTYbEzknTViDqH2kMLYzdwC0MVsyAEafisEIM1rmSUzftIzPJQA==
+  dependencies:
+    tslib "^1.9.0"
 
 ngx-toastr@^10.0.2:
   version "10.0.2"
